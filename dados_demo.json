@@ -1,0 +1,17 @@
+{
+  "base": "Base de Manutenção",
+  "pedidos": ["Pedido A", "Pedido B", "Pedido C"],
+  "locais": ["Base de Manutenção", "Pedido A", "Pedido B", "Pedido C"],
+  "tempo_deslocamento_minutos": [
+    [0, 8, 12, 9],
+    [8, 0, 6, 5],
+    [12, 6, 0, 4],
+    [9, 5, 4, 0]
+  ],
+  "tempo_vistoria_minutos": {
+    "Pedido A": 12,
+    "Pedido B": 10,
+    "Pedido C": 15
+  },
+  "limite_turno_minutos": 240
+}
