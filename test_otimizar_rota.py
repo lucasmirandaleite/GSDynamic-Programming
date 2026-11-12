@@ -96,5 +96,20 @@ class TestRuaEmDia(unittest.TestCase):
         self.assertEqual(resultado["tempo_total_minutos"], 0)
 
 
+class TestInstanciaSp156(unittest.TestCase):
+    def test_instancia_com_pedidos_reais_do_sp156(self):
+        dados = json.loads(
+            Path(__file__).with_name("dados_sp156.json").read_text(encoding="utf-8")
+        )
+        resultado = otimizar_rota(dados)
+        self.assertTrue(resultado["rota_encontrada"])
+        self.assertEqual(resultado["rota"][0], "Subprefeitura São Mateus")
+        self.assertEqual(resultado["rota"][-1], "Subprefeitura São Mateus")
+        self.assertCountEqual(resultado["rota"][1:-1], dados["pedidos"])
+        self.assertAlmostEqual(resultado["tempo_deslocamento_minutos"], 48.0)
+        self.assertAlmostEqual(resultado["tempo_deslocamento_ordem_original_minutos"], 48.5)
+        self.assertTrue(resultado["cabe_no_turno"])
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

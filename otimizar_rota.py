@@ -180,25 +180,25 @@ def main() -> None:
         print(f"Erro nos dados: {erro}")
         raise SystemExit(1)
 
-    print("RUA EM DIA — ROTEIRO DE VISTORIA (demonstração)")
+    print("RUA EM DIA — ROTEIRO DE VISTORIA")
     if not resultado["rota_encontrada"]:
         print(resultado["mensagem"])
         print(f"Estados de DP avaliados: {resultado['estados_dp']}")
         return
     print("Rota:", " -> ".join(resultado["rota"]))
-    print(f"Deslocamento: {resultado['tempo_deslocamento_minutos']:.0f} min")
+    print(f"Deslocamento: {resultado['tempo_deslocamento_minutos']:.1f} min")
     original = resultado["tempo_deslocamento_ordem_original_minutos"]
     if original is None:
         print("Ordem original dos pedidos: não é possível percorrer com os trechos informados")
     else:
-        print(f"Ordem original dos pedidos: {original:.0f} min")
+        print(f"Ordem original dos pedidos: {original:.1f} min")
         print(f"Redução do deslocamento: {resultado['reducao_deslocamento_percentual']:.1f}%")
-    print(f"Vistorias: {resultado['tempo_vistoria_minutos']:.0f} min")
-    print(f"Total estimado: {resultado['tempo_total_minutos']:.0f} min")
+    print(f"Vistorias: {resultado['tempo_vistoria_minutos']:.1f} min")
+    print(f"Total estimado: {resultado['tempo_total_minutos']:.1f} min")
     print(f"Limite do turno: {resultado['limite_turno_minutos']:.0f} min")
     print("Cabe no turno:", "sim" if resultado["cabe_no_turno"] else "não")
     print(f"Estados de DP avaliados: {resultado['estados_dp']}")
-    print("Aviso: os dados desta execução são ilustrativos; não representam medições reais.")
+    print("Aviso: tempos estimados, não medidos em campo. Veja a origem dos dados no README.")
 
 
 if __name__ == "__main__":

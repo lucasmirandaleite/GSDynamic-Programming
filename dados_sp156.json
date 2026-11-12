@@ -1,0 +1,27 @@
+{
+  "descricao": "Instância com 3 pedidos reais de tapa-buraco do SP156 (2º semestre de 2014). Tempos de deslocamento estimados pelo grupo no Google Maps (ponto médio da faixa informada, igual nos dois sentidos). Tempo de vistoria de 10 min por pedido é uma suposição do grupo.",
+  "base": "Subprefeitura São Mateus",
+  "pedidos": [
+    "Pedido 8115 - Parque São Rafael",
+    "Pedido 16653 - Jardim São Rafael",
+    "Pedido 33092 - Jardim Iguatemi"
+  ],
+  "locais": [
+    "Subprefeitura São Mateus",
+    "Pedido 8115 - Parque São Rafael",
+    "Pedido 16653 - Jardim São Rafael",
+    "Pedido 33092 - Jardim Iguatemi"
+  ],
+  "tempo_deslocamento_minutos": [
+    [0, 14, 13.5, 13.5],
+    [14, 0, 5, 16],
+    [13.5, 5, 0, 16],
+    [13.5, 16, 16, 0]
+  ],
+  "tempo_vistoria_minutos": {
+    "Pedido 8115 - Parque São Rafael": 10,
+    "Pedido 16653 - Jardim São Rafael": 10,
+    "Pedido 33092 - Jardim Iguatemi": 10
+  },
+  "limite_turno_minutos": 240
+}
