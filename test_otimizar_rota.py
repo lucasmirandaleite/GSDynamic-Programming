@@ -1,3 +1,4 @@
+import csv
 import json
 import unittest
 from pathlib import Path
@@ -97,7 +98,7 @@ class TestRuaEmDia(unittest.TestCase):
 
 
 class TestInstanciaSp156(unittest.TestCase):
-    def test_instancia_com_pedidos_reais_do_sp156(self):
+    def test_instancia_com_pedidos_sp156_identificados_por_atributos(self):
         dados = json.loads(
             Path(__file__).with_name("dados_sp156.json").read_text(encoding="utf-8")
         )
@@ -109,6 +110,24 @@ class TestInstanciaSp156(unittest.TestCase):
         self.assertAlmostEqual(resultado["tempo_deslocamento_minutos"], 48.0)
         self.assertAlmostEqual(resultado["tempo_deslocamento_ordem_original_minutos"], 48.5)
         self.assertTrue(resultado["cabe_no_turno"])
+        self.assertEqual([p.split(" - ", 1)[0] for p in dados["pedidos"]], ["P1", "P2", "P3"])
+        self.assertIn("não contém protocolo nem _id", dados["descricao"])
+
+    def test_csv_minimo_tem_registros_confirmados_e_ids_locais(self):
+        caminho = Path(__file__).with_name("amostra_sp156_tapa_buraco_2014.csv")
+        with caminho.open(encoding="utf-8", newline="") as arquivo:
+            leitor = csv.DictReader(arquivo)
+            self.assertEqual(leitor.fieldnames[0], "ID local")
+            linhas = list(leitor)
+        self.assertEqual([linha["ID local"] for linha in linhas], ["P1", "P2", "P3"])
+        self.assertEqual(
+            [(linha["Data de abertura"], linha["Bairro"], linha["Status da solicitação"], linha["Data do parecer"].split()[0]) for linha in linhas],
+            [
+                ("2014-07-07", "PARQUE SAO RAFAEL", "REALIZADA", "2014-10-13"),
+                ("2014-07-13", "JARDIM SAO RAFAEL", "REALIZADA", "2014-08-08"),
+                ("2014-07-23", "JARDIM IGUATEMI", "REALIZADA", "2014-10-13"),
+            ],
+        )
 
 
 if __name__ == "__main__":
