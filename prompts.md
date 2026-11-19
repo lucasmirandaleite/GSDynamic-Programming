@@ -17,7 +17,6 @@ Uso de IA (Claude) como copiloto: revisão do trabalho contra os requisitos da d
 | 9 | 14/11/2026 | Claude | Enviei as versões corrigidas de Dynamic Programming e Cálculo e pedi uma análise dos pontos a melhorar. | Ajustes no README: explicação da contribuição para os ODS e nota sobre o órgão responsável por P2. |
 | 10 | 16/11/2026 | Claude | Pedi para corrigir os pontos de Dynamic Programming que poderiam reduzir a nota. | Implementação de tabulação (além da memoização), análise de sensibilidade às faixas de tempo, benchmark ampliado, testes novos e reescrita do texto sobre a origem dos tempos no README. |
 
-> Se houve outros prompts (por exemplo, para escrever ou depurar o código-base do algoritmo), acrescentem aqui antes de enviar. Registrem apenas o que realmente foi feito.
 
 ## O que foi decidido e verificado pelo grupo
 
