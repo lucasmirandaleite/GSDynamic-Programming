@@ -1,5 +1,5 @@
 {
-  "descricao": "Instância com 3 solicitações de tapa-buraco do SP156 (2º semestre de 2014), identificadas localmente como P1–P3 por atributos publicados. A fonte contém as colunas Data de abertura, Canal de atendimento, Assunto, Especificação do assunto, Bairro, Órgão, Status da solicitação e Data do parecer; não contém protocolo nem _id. Tempos de deslocamento estimados pelo grupo no Google Maps (ponto médio da faixa informada, igual nos dois sentidos). Tempo de vistoria de 10 min por pedido é uma suposição do grupo.",
+  "descricao": "Instância com 3 solicitações de tapa-buraco do SP156 (2º semestre de 2014), identificadas localmente como P1–P3 por atributos publicados. A fonte contém as colunas Data de abertura, Canal de atendimento, Assunto, Especificação do assunto, Bairro, Órgão, Status da solicitação e Data do parecer; não contém protocolo nem _id. Tempos de deslocamento: ponto médio de faixas atribuídas a consulta no Google Maps, igual nos dois sentidos; o repositório não guarda o registro da consulta, então são estimativas assumidas pelo grupo (faixas em 'faixas_informadas_minutos'). Tempo de vistoria de 10 min por pedido é uma suposição do grupo.",
   "base": "Subprefeitura São Mateus",
   "pedidos": [
     "P1 - Parque São Rafael (abertura 2014-07-07)",
@@ -13,10 +13,68 @@
     "P3 - Jardim Iguatemi (abertura 2014-07-23)"
   ],
   "tempo_deslocamento_minutos": [
-    [0, 14, 13.5, 13.5],
-    [14, 0, 5, 16],
-    [13.5, 5, 0, 16],
-    [13.5, 16, 16, 0]
+    [
+      0,
+      14,
+      13.5,
+      13.5
+    ],
+    [
+      14,
+      0,
+      5,
+      16
+    ],
+    [
+      13.5,
+      5,
+      0,
+      16
+    ],
+    [
+      13.5,
+      16,
+      16,
+      0
+    ]
+  ],
+  "faixas_informadas_minutos": [
+    {
+      "de": 0,
+      "para": 1,
+      "min": 10,
+      "max": 18
+    },
+    {
+      "de": 0,
+      "para": 2,
+      "min": 9,
+      "max": 18
+    },
+    {
+      "de": 0,
+      "para": 3,
+      "min": 10,
+      "max": 17
+    },
+    {
+      "de": 1,
+      "para": 2,
+      "min": 4,
+      "max": 6
+    },
+    {
+      "de": 1,
+      "para": 3,
+      "min": 12,
+      "max": 20
+    },
+    {
+      "de": 2,
+      "para": 3,
+      "min": 12,
+      "max": 20
+    }
   ],
   "tempo_vistoria_minutos": {
     "P1 - Parque São Rafael (abertura 2014-07-07)": 10,

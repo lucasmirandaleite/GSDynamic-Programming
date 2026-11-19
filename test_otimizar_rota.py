@@ -130,5 +130,57 @@ class TestInstanciaSp156(unittest.TestCase):
         )
 
 
+class TestTabulacaoESensibilidade(unittest.TestCase):
+    def test_tabulacao_e_memoizacao_tem_o_mesmo_custo_minimo(self):
+        import random
+
+        rng = random.Random(7)
+        for _ in range(60):
+            n = rng.randint(0, 7)
+            nomes = [f"P{i}" for i in range(n)]
+            matriz = [
+                [0 if i == j else (None if rng.random() < 0.2 else rng.randint(1, 30))
+                 for j in range(n + 1)]
+                for i in range(n + 1)
+            ]
+            dados = {
+                "base": "Base",
+                "pedidos": nomes,
+                "locais": ["Base", *nomes],
+                "tempo_deslocamento_minutos": matriz,
+                "tempo_vistoria_minutos": {nome: 1 for nome in nomes},
+                "limite_turno_minutos": 1000,
+            }
+            memo = otimizar_rota(dados, "memoizacao")
+            tab = otimizar_rota(dados, "tabulacao")
+            self.assertEqual(memo["rota_encontrada"], tab["rota_encontrada"])
+            if memo["rota_encontrada"]:
+                self.assertAlmostEqual(
+                    memo["tempo_deslocamento_minutos"], tab["tempo_deslocamento_minutos"]
+                )
+                self.assertCountEqual(tab["rota"][1:-1], nomes)
+                self.assertEqual(tab["rota"][0], "Base")
+                self.assertEqual(tab["rota"][-1], "Base")
+
+    def test_metodo_invalido_e_rejeitado(self):
+        dados = json.loads(
+            Path(__file__).with_name("dados_demo.json").read_text(encoding="utf-8")
+        )
+        with self.assertRaises(ValueError):
+            otimizar_rota(dados, "forca_bruta")
+
+    def test_analise_de_sensibilidade_cobre_as_64_combinacoes(self):
+        from analise_sensibilidade import analisar
+
+        dados = json.loads(
+            Path(__file__).with_name("dados_sp156.json").read_text(encoding="utf-8")
+        )
+        resultado = analisar(dados)
+        self.assertEqual(resultado["cenarios"], 64)
+        self.assertLessEqual(resultado["deslocamento_min"], 48.0)
+        self.assertGreaterEqual(resultado["deslocamento_max"], 48.0)
+        self.assertGreaterEqual(resultado["reducao_min"], 0.0)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

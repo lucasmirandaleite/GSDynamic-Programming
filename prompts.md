@@ -15,6 +15,7 @@ Uso de IA (Claude) como copiloto: revisão do trabalho contra os requisitos da d
 | 7 | 12/11/2026 | Claude | Enviei as solicitações e faixas de tempo de deslocamento e pedi para montar a instância no formato do programa. | `dados_sp156.json`, teste automatizado e seção de dados no README, com a origem e suposições declaradas. |
 | 8 | 12/11/2026 | Assistente de programação | Solicitei revisão da rastreabilidade da amostra SP156 e teste do algoritmo por benchmark reproduzível. | Amostra mínima CSV, correção de rótulos, teste por força bruta com 300 instâncias sintéticas e script de benchmark. |
 | 9 | 14/11/2026 | Claude | Enviei as versões corrigidas de Dynamic Programming e Cálculo e pedi uma análise dos pontos a melhorar. | Ajustes no README: explicação da contribuição para os ODS e nota sobre o órgão responsável por P2. |
+| 10 | 16/11/2026 | Claude | Pedi para corrigir os pontos de Dynamic Programming que poderiam reduzir a nota. | Implementação de tabulação (além da memoização), análise de sensibilidade às faixas de tempo, benchmark ampliado, testes novos e reescrita do texto sobre a origem dos tempos no README. |
 
 > Se houve outros prompts (por exemplo, para escrever ou depurar o código-base do algoritmo), acrescentem aqui antes de enviar. Registrem apenas o que realmente foi feito.
 
